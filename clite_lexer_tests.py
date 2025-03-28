@@ -44,12 +44,12 @@ class TestFloats(unittest.TestCase):
             self.assertAlmostEqual(token.value, value)
             self.assertEqual(token.type, 'FLOAT')
     
-    # def test_decimal_underscored_floats(self):
-    #     self.lexer.input('1_5. 0.15e+0_2')
-    #     for value in [15.0, 15.0]:
-    #         token = self.lexer.token()
-    #         self.assertAlmostEqual(token.value, value)
-    #         self.assertEqual(token.type, 'FLOAT')
+    def test_decimal_underscored_floats(self):
+        self.lexer.input('1_5. 0.15e+0_2')
+        for value in [15.0, 15.0]:
+            token = self.lexer.token()
+            self.assertAlmostEqual(token.value, value)
+            self.assertEqual(token.type, 'FLOAT')
 
     # def test_wrong_floats_1(self):
     #     self.lexer.input('1_.5')
@@ -72,4 +72,5 @@ class TestFloats(unittest.TestCase):
     #     self.assertRaises(lex.LexError, self.lexer.token)
 
 if __name__ == '__main__':
+    #unittest.main(TestIntegers())
     unittest.main(TestFloats())
