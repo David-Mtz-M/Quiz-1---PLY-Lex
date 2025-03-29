@@ -6,12 +6,12 @@ t_ignore  = ' \t'
 
 def t_FLOAT(t):
     r'''
-    \d+(?:_\d+)*           # Ints con guiones bajos
-    (\.\d*(?:_\d*)?)?      # Parte fraccional opcional (con guiones bajos)
-    ([eE][+-]?\d+(?:_\d*)*)? # Parte exponencial opcional (notacion cientifica)
-    |
-    \.\d+(?:_\d*)?        # Iniciando con punto decimal
-    ([eE][+-]?\d+(?:_\d*)*)? # parte exponencial opcional
+    \d+\.\d+e\+\d+(_\d)+ |
+    \d*\.\d*e(\+|\-)\d+ |
+    \d*\.\d*E(\+|\-)\d+ |
+    \d+E\d+ |
+    \d+(_\d)*\.\d* |
+    \.\d+
     '''
     t.value = float(t.value.replace('_', ''))
     return t
